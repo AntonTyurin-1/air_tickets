@@ -3,9 +3,10 @@ import "./Ticket.css";
 import logo from "./img/Logo.jpg";
 import {getPadTime} from '../../helpers/getPadTime'
 import { ITickets } from "../../types/type";
+import { FC } from "react";
 
-export const Ticket = (ticket: ITickets) => {
-  const stopsCount = ():string => {
+export const Ticket:FC<ITickets> = ({ticket, currentTypeCurrency}) => {
+  const stopsCount = () => {
     if (ticket.stops === 1) {
       return ticket.stops + " пересадка";
     } else if (ticket.stops === 0) {
@@ -23,7 +24,9 @@ export const Ticket = (ticket: ITickets) => {
             <strong>Купить</strong>
           </span>
           <span>
-            <strong>за {ticket.price} </strong>
+				{currentTypeCurrency === 'rub' && <strong>за {ticket.price} ₽ </strong>}
+            {currentTypeCurrency === 'usd' && <strong>за {ticket.priceUsd} $ </strong>}
+            {currentTypeCurrency === 'eur' && <strong>за {ticket.priceEur} € </strong>}
           </span>
         </div>
       </div>

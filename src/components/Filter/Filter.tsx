@@ -4,81 +4,62 @@ import { useEffect, useState } from "react";
 import data from "../../tickets.json";
 import { Ticket } from "../Ticket/Ticket";
 import "./Filter.css";
-import { IFilter, ITickets, TLocalData } from "../../types/type";
+import { IFilter, TLocalData, TypeTicket } from "../../types/type";
 
 export const Filter = () => {
-
- const arrFilter: IFilter[] =  [
-	{
-	  value: "all",
-	  name: "Все",
-	  checked: false,
-	},
-	{
-	  value: 0,
-	  name: "Без пересадок",
-	  checked: false,
-	},
-	{
-	  value: 1,
-	  name: "1 пересадка",
-	  checked: false,
-	},
-	{
-	  value: 2,
-	  name: "2 пересадки",
-	  checked: false,
-	},
-	{
-	  value: 3,
-	  name: "3 пересадки",
-	  checked: false,
-	},
- ]
- 
- const [tickets, setTickets] = useState(data["tickets"]);
- 
- const [filters, setFilters] = useState(
-	JSON.parse(localStorage.getItem('tickets') as TLocalData)
-	 || arrFilter
-  ); 
-// смена валюты
-
-	const choiceCurrency = (name: string) => {
-		if(name === 'rub') {
-			setTickets(tickets)
-		}else if(name === 'usd')  {
-			const newCurrency = [...tickets].map(item => {
-				return {...item, price: Math.round(item.price/73)}
-			})
-			setTickets(newCurrency)
-		}else if(name === 'eur')  {
-			const newCurrency = [...tickets].map(item => {
-				return {...item, price: Math.round(item.price/76.95)}
-			})
-			setTickets(newCurrency)
-		}
-  }
-
+  const arrFilter = [
+    {
+      value: "all",
+      name: "Все",
+      checked: false,
+    },
+    {
+      value: '0',
+      name: "Без пересадок",
+      checked: false,
+    },
+    {
+      value: '1',
+      name: "1 пересадка",
+      checked: false,
+    },
+    {
+      value: '2',
+      name: "2 пересадки",
+      checked: false,
+    },
+    {
+      value: '3',
+      name: "3 пересадки",
+      checked: false,
+    },
+  ];
   
 
-  // фильтрация
+  const [tickets, setTickets] = useState<TypeTicket[]>(data['tickets']);
+  
+  const [filters, setFilters] = useState<IFilter[]>(
+    JSON.parse(localStorage.getItem("tickets") as TLocalData) || arrFilter
+  );
+  const [typeCurrency, setTypeCurrency] = useState<string>("rub");
+ 
 
+  // фильтрация
   useEffect(() => {
     const activeFilter = filters
-      .filter((item:IFilter) => item.checked)
-      .map((item:IFilter) => Number(item.value));
-    const filteredTickets = data["tickets"]
-      .filter((ticket: ITickets) => activeFilter.includes(ticket.stops))
-      .sort((ticket1: ITickets, ticket2: ITickets) => ticket1.price - ticket2.price);
+      .filter((item) => item.checked)
+      .map((item) => Number(item.value));
+    const filteredTickets = data["tickets"].filter((ticket) =>
+      activeFilter.includes(ticket.stops)
+    );
     setTickets(filteredTickets);
-	 
+
     localStorage.setItem("tickets", JSON.stringify(filters))
   }, [filters]);
 
-  // выбор checkbox
 
-  const handleCheckbox = (e:any, index: number) => {
+  // выбор checkbox
+  const handleCheckbox = (e: any, index: number): void => {
     const newFilters = [...filters];
 
     if (e.target.checked && e.target.name === "all") {
@@ -103,25 +84,49 @@ export const Filter = () => {
   };
   // выбор только одного checkbox
 
-  const onlyOneCheckbox = (e: any, index: number) => {
+  const onlyOneCheckbox = (index: number): void => {
     const newFilters = [...filters];
-    newFilters.map((item: IFilter) => (item.checked = false));
-    
+    newFilters.map((item) => (item.checked = false));
     newFilters[index].checked = true;
     setFilters(newFilters);
   };
+
   return (
     <div className="order">
       <div className="order__filter filter">
         <div className="filter__well">
           <span className="filter__well_title"> Валюта</span>
           <div className="filter__well_buttons">
-            <button className="filter__well_button" onClick={() => choiceCurrency('rub')}
-				>rub</button>
-            <button className="filter__well_button" onClick={() => choiceCurrency('usd')}
-				>usd</button>
-            <button className="filter__well_button" onClick={() => choiceCurrency('eur')}
-				>eur</button>
+            <button
+              className={
+                typeCurrency === "rub"
+                  ? "filter__well_button filter__well_button--active"
+                  : "filter__well_button"
+              }
+              onClick={() => setTypeCurrency("rub")}
+            >
+              rub
+            </button>
+            <button
+              className={
+                typeCurrency === "usd"
+                  ? "filter__well_button filter__well_button--active"
+                  : "filter__well_button"
+              }
+              onClick={() => setTypeCurrency("usd")}
+            >
+              usd
+            </button>
+            <button
+              className={
+                typeCurrency === "eur"
+                  ? "filter__well_button filter__well_button--active"
+                  : "filter__well_button"
+              }
+              onClick={() => setTypeCurrency("eur")}
+            >
+              eur
+            </button>
           </div>
         </div>
         <div className="filter__stops">
@@ -141,18 +146,19 @@ export const Filter = () => {
               </label>
               <span
                 className="filter__stops_only"
-                onClick={(e) => onlyOneCheckbox(e, index)}
+                onClick={() => onlyOneCheckbox(index)}
               >
-                {index === 0 ? '' : 'только'}
+                {index === 0 ? "" : "только"}
               </span>
             </div>
           ))}
         </div>
       </div>
       <div className="order__tickets">
-        {tickets.map((ticket) => (
-          <Ticket {...ticket} key={ticket.price} />
-        ))}
+        {tickets
+          .map((ticket:any, index:any) => (
+            <Ticket ticket={ticket} key={index} currentTypeCurrency={typeCurrency}/>
+          ))}
       </div>
     </div>
   );

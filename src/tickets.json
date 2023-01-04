@@ -10,7 +10,9 @@
     "arrival_time": "22:10",
     "carrier": "TK",
     "stops": 3,
-    "price": 12400
+    "price": 12400,
+	"priceUsd": 170,
+	"priceEur": 161
   }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
@@ -22,7 +24,9 @@
     "arrival_time": "23:50",
     "carrier": "S7",
     "stops": 1,
-    "price": 13100
+    "price": 13100,
+	 "priceUsd": 180,
+	"priceEur": 170
   }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
@@ -34,7 +38,9 @@
     "arrival_time": "18:10",
     "carrier": "SU",
     "stops": 0,
-    "price": 15300
+    "price": 15300,
+	 "priceUsd": 209,
+	"priceEur": 198
   }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
@@ -46,7 +52,9 @@
     "arrival_time": "23:30",
     "carrier": "TK",
     "stops": 2,
-    "price": 11000
+    "price": 11000,
+	 "priceUsd": 150,
+	"priceEur": 142
   }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
@@ -58,7 +66,9 @@
     "arrival_time": "20:15",
     "carrier": "BA",
     "stops": 3,
-    "price": 13400
+    "price": 13400,
+	 "priceUsd": 183,
+	"priceEur": 174
   }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
@@ -70,7 +80,9 @@
     "arrival_time": "19:25",
     "carrier": "SU",
     "stops": 3,
-    "price": 12450
+    "price": 12450,
+	 "priceUsd": 170,
+	"priceEur": 161
   }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
@@ -82,7 +94,9 @@
     "arrival_time": "23:45",
     "carrier": "TK",
     "stops": 1,
-    "price": 13600
+    "price": 13600,
+	 "priceUsd": 186,
+	"priceEur": 176
   }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
@@ -94,7 +108,9 @@
     "arrival_time": "15:25",
     "carrier": "TK",
     "stops": 0,
-    "price": 14250
+    "price": 14250,
+	 "priceUsd": 195,
+	"priceEur": 185
   }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
@@ -106,7 +122,9 @@
     "arrival_time": "23:35",
     "carrier": "SU",
     "stops": 1,
-    "price": 16700
+    "price": 16700,
+	 "priceUsd": 228,
+	"priceEur": 216
   }, {
     "origin": "VVO",
     "origin_name": "Владивосток",
@@ -118,6 +136,8 @@
     "arrival_time": "16:15",
     "carrier": "S7",
     "stops": 0,
-    "price": 17400
+    "price": 17400,
+	 "priceUsd": 238,
+	"priceEur": 225
   }]
 }

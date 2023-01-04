@@ -40,7 +40,14 @@
   background-color: #fff;
   border-left: 1px solid rgb(255, 255, 255);
   border: 1px solid rgb(215, 215, 215);
+  
 }
+.filter__well_button--active {
+	background-color: rgb(8, 152, 255);
+	color: #fff;
+	border: 1px solid rgb(8, 152, 255);
+  }
+
 .filter__well_button:first-child {
   border-left: 1px solid rgb(215, 215, 215);
   border-top: 1px solid rgb(215, 215, 215);
@@ -61,10 +68,11 @@
   background-color: rgb(228, 242, 253);
 }
 .filter__well_button:focus {
-	background-color: rgb(8, 152, 255);
-	color: #fff;
+	cursor: pointer;
 	border: 1px solid rgb(8, 152, 255);
-}
+	background-color: rgb(8, 152, 255);
+ }
+
 .filter__stops {
   display: flex;
   flex-direction: column;
