@@ -64,7 +64,7 @@ export const Filter = () => {
 
     if (e.target.checked && e.target.name === "all") {
       setFilters(
-        newFilters.map((item: IFilter) => {
+        newFilters.map((item) => {
           return { ...item, checked: true };
         })
       );
@@ -72,7 +72,7 @@ export const Filter = () => {
     }
     if (e.target.name === "all" && !e.target.checked) {
       setFilters(
-        newFilters.map((item: IFilter) => {
+        newFilters.map((item) => {
           return { ...item, checked: false };
         })
       );
@@ -131,7 +131,7 @@ export const Filter = () => {
         </div>
         <div className="filter__stops">
           <span className="filter__stops_title"> Количество пересадок</span>
-          {filters.map((checkbox: IFilter, index: number) => (
+          {filters.map((checkbox, index: number) => (
             <div className="filter__stops_item" key={checkbox.name}>
               <label className="filter__stops_label">
                 <input
@@ -156,7 +156,7 @@ export const Filter = () => {
       </div>
       <div className="order__tickets">
         {tickets
-          .map((ticket:any, index:any) => (
+          .map((ticket, index:any) => (
             <Ticket ticket={ticket} key={index} currentTypeCurrency={typeCurrency}/>
           ))}
       </div>
