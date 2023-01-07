@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import data from "../../tickets.json";
 import { Ticket } from "../Ticket/Ticket";
-import "./Filter.css";
+import "./Filter.scss";
 import { IFilter, TLocalData, TypeTicket } from "../../types/type";
 
 export const Filter = () => {

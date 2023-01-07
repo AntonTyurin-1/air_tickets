@@ -1,5 +1,5 @@
 /** @format */
-import "./Ticket.css";
+import "./Ticket.scss";
 import logo from "./img/Logo.jpg";
 import {getPadTime} from '../../helpers/getPadTime'
 import { ITickets } from "../../types/type";

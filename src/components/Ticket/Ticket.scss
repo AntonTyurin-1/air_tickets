@@ -1,0 +1,91 @@
+/** @format */
+$colorForStops: rgb(154, 154, 154);
+.ticket {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #fff;
+  border-radius: 0.5em;
+  margin-bottom: 2em;
+  box-shadow: 0.5em 0.5em 1em rgb(131, 174, 189);
+  &__img {
+    border-right: 1px solid rgb(169, 230, 247);
+    padding: 1em;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(222, 93, 24);
+    border-radius: 0.2em;
+    padding: 0.3em 1.2em;
+    color: #fff;
+    &:hover {
+      background-color: rgb(255, 109, 30);
+      cursor: pointer;
+    }
+  }
+
+  &__flight-info {
+    display: flex;
+    flex-direction: column;
+    padding: .8em;
+    min-width: 250px;
+  }
+  &__time {
+    display: flex;
+    gap: 1em;
+  }
+  &__stops {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(154, 154, 154);
+    font-size: 0.5em;
+    font-weight: 800;
+  }
+  &__departure_time {
+    font-size: 2.5em;
+  }
+  &__stops-count {
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 70px;
+    padding: 0 1.5em;
+  }
+  &__stops-img {
+    position: relative;
+    align-self: end;
+    &::before {
+       content: "";
+       position: absolute;
+       top: 5px;
+       right: 13px;
+       height: 1px;
+       width: 80px;
+       background-color: $colorForStops;
+    }
+  }
+  &__direction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__departure {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    &-date {
+      color: $colorForStops;
+      padding-top: 0.3em;
+    }
+  }
+}
+.material-icons {
+  color: $colorForStops;
+  font-size: 1.5em;
+  transform: rotate(90deg);
+}
