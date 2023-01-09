@@ -1,150 +1,143 @@
 /** @format */
+$buttonBorderColor: 1px solid rgb(215, 215, 215);
+$buttonBorderHover: rgb(8, 152, 255);
+$buttonBorderRadius: 0.4em;
 
 .order {
-  font-size: 16px;
-  font-family: "Times New Roman", Times, serif;
-  display: flex;
- 
-  gap: 1em;
-  min-width: 750px;
-  height: 100vh;
-  margin: 30px auto;
-  justify-content: flex-start;
-  align-items: flex-start;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    gap: 1em;
+    min-width: 750px;
+    height: 100vh;
+    margin: 30px auto;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
-.order__filter {
-  max-width: 30%;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border-radius: 0.5em;
-  border: 1px solid #d0eaf5;
+.filter {
+    max-width: 30%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 0.5em;
+    border: 1px solid #d0eaf5;
+    &__well {
+        width: calc(100% - 1.6em);
+        display: flex;
+        flex-direction: column;
+        text-transform: uppercase;
+        font-size: 0.9em;
+        padding: 0.8em;
+    }
+    &__well_buttons {
+        width: 100%;
+        margin-top: 0.5em;
+    }
+    &__well_button {
+        width: 33.3%;
+        color: $buttonBorderHover;
+        text-transform: uppercase;
+        padding: 0.5em 0;
+        background-color: #fff;
+        border-left: $buttonBorderColor;
+        border: $buttonBorderColor;
+        &--active {
+            background-color: $buttonBorderHover;
+            color: #fff;
+            border: 1px solid $buttonBorderHover;
+        }
+        &:first-child {
+            border-left: $buttonBorderColor;
+            border-top: $buttonBorderColor;
+            border-bottom: $buttonBorderColor;
+            border-top-left-radius: $buttonBorderRadius;
+            border-bottom-left-radius: $buttonBorderRadius;
+        }
+        &:last-child {
+            border-right: $buttonBorderColor;
+            border-top: $buttonBorderColor;
+            border-bottom: $buttonBorderColor;
+            border-top-right-radius: $buttonBorderRadius;
+            border-bottom-right-radius: $buttonBorderRadius;
+        }
+        &:hover {
+            cursor: pointer;
+            border: 1px solid $buttonBorderHover;
+            background-color: rgb(228, 242, 253);
+        }
+        &:focus {
+            cursor: pointer;
+            border: 1px solid $buttonBorderHover;
+            background-color: $buttonBorderHover;
+        }
+    }
+    &__stops {
+        display: flex;
+        flex-direction: column;
+        padding: 0.3em 0;
+        margin-top: 0.8em;
+        &_title {
+            text-transform: uppercase;
+            font-size: 0.9em;
+            padding: 0 0.8em;
+        }
+        &_item {
+            padding: 0.4em 0.8em;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            &:hover {
+                background-color: rgb(214, 245, 253);
+            }
+            & .filter__stops_only {
+                color: $buttonBorderHover;
+                cursor: pointer;
+            }
+        }
+        &_label:hover {
+            cursor: pointer;
+        }
+        &_real_checkbox {
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+            &:checked + .filter__stops_custom_checkbox::before {
+                opacity: 1;
+            }
+            &:checked + .filter__stops_custom_checkbox {
+                border: 2px solid $buttonBorderHover;
+                background-color: rgb(224, 239, 250);
+            }
+        }
+        &_custom_checkbox {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            border: 2px solid rgb(215, 215, 215);
+            border-radius: 0.2em;
+            position: relative;
+            vertical-align: sub;
+            margin-right: 0.8em;
+            transition: 0.2s ease-in;
+            &::before {
+                content: '';
+                width: 0.5em;
+                height: 0.2em;
+                top: 4px;
+                left: 3px;
+                border-bottom: 2px solid $buttonBorderHover;
+                border-left: 2px solid $buttonBorderHover;
+                position: absolute;
+                transform: rotate(-45deg);
+                opacity: 0;
+                transition: 0.2s ease-in;
+            }
+        }
+        &_only {
+            margin-left: 1.5em;
+            font-size: 0.7em;
+            text-transform: uppercase;
+            color: #fff;
+        }
+    }
 }
-.filter__well {
-  width: calc(100% - 1.6em);
-  display: flex;
-  flex-direction: column;
-  text-transform: uppercase;
-  font-size: 0.9em;
-  padding: 0.8em;
-}
-.filter__well_buttons {
-  width: 100% ;
-  margin-top: 0.5em;
-}
-.filter__well_button {
-  width: 33.3%;
-  color: rgb(8, 152, 255);
-  text-transform: uppercase;
-  padding: .5em 0;
-  background-color: #fff;
-  border-left: 1px solid rgb(255, 255, 255);
-  border: 1px solid rgb(215, 215, 215);
-  
-}
-.filter__well_button--active {
-	background-color: rgb(8, 152, 255);
-	color: #fff;
-	border: 1px solid rgb(8, 152, 255);
-  }
-
-.filter__well_button:first-child {
-  border-left: 1px solid rgb(215, 215, 215);
-  border-top: 1px solid rgb(215, 215, 215);
-  border-bottom: 1px solid rgb(215, 215, 215);
-  border-top-left-radius: 0.4em;
-  border-bottom-left-radius: 0.4em;
-}
-.filter__well_button:last-child {
-  border-right: 1px solid rgb(215, 215, 215);
-  border-top: 1px solid rgb(215, 215, 215);
-  border-bottom: 1px solid rgb(215, 215, 215);
-  border-top-right-radius: 0.4em;
-  border-bottom-right-radius: 0.4em;
-}
-.filter__well_button:hover {
-  cursor: pointer;
-  border: 1px solid rgb(8, 152, 255);
-  background-color: rgb(228, 242, 253);
-}
-.filter__well_button:focus {
-	cursor: pointer;
-	border: 1px solid rgb(8, 152, 255);
-	background-color: rgb(8, 152, 255);
- }
-
-.filter__stops {
-  display: flex;
-  flex-direction: column;
-  padding: 0.3em 0;
-  margin-top: .8em;
-}
-.filter__stops_title {
-  text-transform: uppercase;
-  font-size: 0.9em;
-  padding: 0 0.8em;
-}
-.filter__stops_item {
-  padding: 0.4em 0.8em;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-.filter__stops_item:hover {
-  background-color: rgb(214, 245, 253);
-}
-.filter__stops_item:hover .filter__stops_only{
-  color: rgb(8, 152, 255);
-  cursor: pointer;
-}
-
-.filter__stops_label:hover {
-  cursor: pointer;
-}
-
-.filter__stops_real_checkbox {
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-}
-
-.filter__stops_custom_checkbox {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  border: 2px solid rgb(215, 215, 215);
-  border-radius: 0.2em;
-  position: relative;
- 
-  vertical-align: sub;
-  margin-right: 0.8em;
-  transition: 0.2s ease-in;
-}
-.filter__stops_custom_checkbox::before {
-  content: "";
-  width: 0.5em;
-  height: 0.2em;
-  top: 4px;
-  left: 3px;
-  
-  border-bottom: 2px solid rgb(8, 152, 255);
-  border-left: 2px solid rgb(8, 152, 255);
-  position: absolute;
-  transform: rotate(-45deg);
-  opacity: 0;
-  transition: 0.2s ease-in;
-}
-.filter__stops_real_checkbox:checked + .filter__stops_custom_checkbox::before {
-  opacity: 1;
-}
-.filter__stops_real_checkbox:checked + .filter__stops_custom_checkbox {
-  border: 2px solid rgb(8, 152, 255);
-  background-color: rgb(224, 239, 250);
-}
-.filter__stops_only {
-	margin-left: 1.5em;
-	font-size: .7em;
-	text-transform: uppercase;
-	color: #fff;
-}
-
